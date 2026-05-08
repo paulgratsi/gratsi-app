@@ -79,7 +79,12 @@ export function Accounts() {
   return (
     <div className="max-w-4xl mx-auto p-4">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">Accounts</h1>
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-3xl font-bold text-gray-900">Accounts</h1>
+          <Link to="/accounts/new" className="flex items-center gap-2 bg-[#e94560] hover:bg-[#d63d56] text-white rounded-lg px-4 py-2 text-sm font-medium transition-colors">
+            <Plus className="w-4 h-4" />Add account
+          </Link>
+        </div>
 
         <div className="relative mb-4">
           <Search className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
@@ -178,10 +183,6 @@ export function Accounts() {
         </button>
       )}
 
-      <Link to="/accounts/new"
-        className="fixed bottom-24 md:bottom-8 right-4 w-14 h-14 bg-[#e94560] hover:bg-[#d63d56] text-white rounded-full flex items-center justify-center shadow-lg transition-colors">
-        <Plus className="w-6 h-6" />
-      </Link>
     </div>
   )
 }
