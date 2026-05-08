@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom'
 import { Building2, Package, Upload, Settings as SettingsIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { ChatDrawer } from './ChatDrawer'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -50,6 +51,9 @@ export function Layout({ children }: LayoutProps) {
       <main className="flex-1 overflow-y-auto pb-20 md:pb-0 safe-area-wrapper">
         {children}
       </main>
+
+      {/* Chat Drawer */}
+      <ChatDrawer />
 
       {/* Mobile Bottom Navigation */}
       <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex md:hidden">
