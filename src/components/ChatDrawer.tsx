@@ -55,23 +55,26 @@ export function ChatDrawer() {
     setLoading(true)
 
     try {
-      // TODO: Replace with Supabase Edge Function call once API key is configured
-      // const response = await fetch(`${SUPABASE_URL}/functions/v1/claude-chat`, {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${anonKey}` },
-      //   body: JSON.stringify({
-      //     message: text,
-      //     history: messages.filter(m => m.id !== 'welcome').map(m => ({ role: m.role, content: m.content })),
-      //     account_id: accountIdMatch?.[1] || null,
-      //   }),
-      // })
-      // const data = await response.json()
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: text,
+          history: messages.filter(m => m.id !== 'welcome').map(m => ({ role: m.role, content: m.content })),
+          account_id: accountIdMatch?.[1] || null,
+        }),
+      })
 
-      // Placeholder response until edge function is deployed
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`)
+      }
+
+      const data = await response.json()
+
       const assistantMsg: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: "The AI assistant is being configured. Once your Anthropic API key is added, I'll be able to query your accounts database, analyze sales trends, and answer questions about your data in real time.",
+        content: data.reply || 'No response received.',
         timestamp: new Date(),
       }
 
