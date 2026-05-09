@@ -16,7 +16,7 @@
     "xlsx": "^0.18.5",
     "lucide-react": "^0.441.0",
     "zustand": "^4.5.5",
-    "@anthropic-ai/sdk": "^0.26.0"
+    "@anthropic-ai/sdk": "latest"
   },
   "devDependencies": {
     "@types/react": "^18.3.5",
